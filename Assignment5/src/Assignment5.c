@@ -9,14 +9,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "list.h"
 
 //constant
 #define ARRAY_LENGTH 1000
 
 //global variable
 extern struct NODE *head;
-
-//function prototypes
 
 int main(void){
 
@@ -28,8 +27,7 @@ int main(void){
 	newList();
 
 	//getting user input
-	//do-while loop to check if the entered number is positive
-	do {
+	while(1){
 
 		//print prompt for number
 		printf("Please enter a number: ");
@@ -39,12 +37,23 @@ int main(void){
 		fgets(inputNumber, (ARRAY_LENGTH - 1), stdin);
 
 		//convert the inputNumber into an integer, store it in the appropriate variable
-		number = atoi(inputNumber);
+		if(!(number = atoi(inputNumber))){
+			//if atoi failed or user entered zero (which is still not a valid number)
+			printf("You entered '0' or a not-so legit 'number'. Please try again kthxbye.\n");
+			continue; //asked for valid input again
+		}
+		else if(number < 0){ //user entered a negative number
+			//gtfo
+			break;
+		}
 
 		//store the number in a stack, implemented using a linked list
-		addNode(number);
+		if(!addNode(number)){ //if malloc failed
+			printf("uh oh no more memory :(\n");
+			exit(1); //byebye
+		}
 
-	} while (number > 0); //NOTE: assuming 0 is not considered a positive integers, as per assignment instructions
+	}//NOTE: assuming 0 is not considered a positive integers, as per assignment instructions
 
 	//do-while loop is done since user entered a negative number
 
