@@ -43,6 +43,7 @@ int main(void){
 			continue; //asked for valid input again
 		}
 		else if(number < 0){ //user entered a negative number
+			printf("You have entered a negative number. Let's print out all the numbers!\n");
 			//gtfo
 			break;
 		}
