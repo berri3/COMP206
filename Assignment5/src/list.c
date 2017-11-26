@@ -22,6 +22,7 @@ struct NODE* head;
 //to NULL
 void newList() {
 	head = NULL;
+	printf("Empty stack successfully initialized.\n");
 }
 
 int addNode(int value) {
@@ -35,6 +36,9 @@ int addNode(int value) {
 	//assign the operator passed as argument in the function call to the operator member of the struct.
 	newNode->number = value;
 	head = newNode; //changes address of the top of the stack to the address of the new node.
+	printf("New node successfully created.\n");
+	printf("The value of the new node is %d.\n", newNode->number);
+	printf("The value of the current head is %d.\n", head->number);
 	return TRUE;
 }
 
@@ -44,7 +48,8 @@ void prettyPrint() {
 	int aNumber;
 
 	//pop the first integer of the linked list
-	while (!(aNumber = pop())) { //while there is stuff left in the linked list
+
+	while ((aNumber = pop())) { //while there is stuff left in the linked list
 		//print that integer
 		printf("%d\n", aNumber);
 	}
@@ -59,8 +64,13 @@ int pop() {
 		//the top of the stack gets reassigned the address of the following node.
 		head = headPointer->pointerNext;
 		free(headPointer); //remove node from memory
+
+
+		printf("Successful pop.\n");
 		return value; //returns the operator
 	} else
 		//empty stack
-		return NULL;
+
+		printf("Unsuccessful pop.\n");
+		return 0;
 }

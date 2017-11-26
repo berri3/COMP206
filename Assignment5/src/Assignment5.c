@@ -39,7 +39,7 @@ int main(void){
 		//convert the inputNumber into an integer, store it in the appropriate variable
 		if(!(number = atoi(inputNumber))){
 			//if atoi failed or user entered zero (which is still not a valid number)
-			printf("You entered '0' or a not-so legit 'number'. Please try again kthxbye.\n");
+			printf("You entered '0' or a not-so-legit 'number'. Please try again kthxbye.\n");
 			continue; //asked for valid input again
 		}
 		else if(number < 0){ //user entered a negative number
