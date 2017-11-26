@@ -14,15 +14,13 @@
 #define TRUE 1
 #define FALSE 0
 
-//(technically) private global linked-list pointer
+//private global linked-list pointer
 //i.e. the top of the stack
 struct NODE* head;
 
-//simply initializes the global pointer of the beginning of the linked list
-//to NULL
+//simply initializes the global pointer of the beginning of the linked list to NULL
 void newList() {
 	head = NULL;
-	printf("Empty stack successfully initialized.\n");
 }
 
 int addNode(int value) {
@@ -33,12 +31,10 @@ int addNode(int value) {
 	}
 	//puts the current address of the top of the stack into pnext.
 	newNode->pointerNext = head;
-	//assign the operator passed as argument in the function call to the operator member of the struct.
+	//assign the operator passed as argument
+	//in the function call to the operator member of the struct.
 	newNode->number = value;
 	head = newNode; //changes address of the top of the stack to the address of the new node.
-	printf("New node successfully created.\n");
-	printf("The value of the new node is %d.\n", newNode->number);
-	printf("The value of the current head is %d.\n", head->number);
 	return TRUE;
 }
 
@@ -47,30 +43,27 @@ int addNode(int value) {
 void prettyPrint() {
 	int aNumber;
 
-	//pop the first integer of the linked list
-
 	while ((aNumber = pop())) { //while there is stuff left in the linked list
 		//print that integer
 		printf("%d\n", aNumber);
 	}
+	printf("That's it! All the integers, if any, are all printed!\n");
 }
 
+//pops the top element of the stack, implemented using a linked-list
+//returns the value popped for success and 0 in case of failure
+//(since technically no number less than 1 is stored in the list
 int pop() {
 	if (head) { //if the address of the top of stack does not point to NULL.
 		//assigns address of the current top of the stack to value.
 		struct NODE *headPointer = head;
-		//elem takes the current operator of the top of the stack.
+		//value takes the current number of the top of the stack.
 		int value = head->number;
 		//the top of the stack gets reassigned the address of the following node.
 		head = headPointer->pointerNext;
 		free(headPointer); //remove node from memory
-
-
-		printf("Successful pop.\n");
-		return value; //returns the operator
+		return value; //returns the value
 	} else
 		//empty stack
-
-		printf("Unsuccessful pop.\n");
 		return 0;
 }

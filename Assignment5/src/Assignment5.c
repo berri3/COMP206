@@ -14,9 +14,6 @@
 //constant
 #define ARRAY_LENGTH 1000
 
-//global variable
-extern struct NODE *head;
-
 int main(void){
 
 	//initializing variables
@@ -39,11 +36,12 @@ int main(void){
 		//convert the inputNumber into an integer, store it in the appropriate variable
 		if(!(number = atoi(inputNumber))){
 			//if atoi failed or user entered zero (which is still not a valid number)
-			printf("You entered '0' or a not-so-legit 'number'. Please try again kthxbye.\n");
+			printf("You entered '0' or a not-so-legit 'number'. Please try again thx.\n");
 			continue; //asked for valid input again
 		}
 		else if(number < 0){ //user entered a negative number
-			printf("You have entered a negative number. Let's print out all the numbers!\n");
+			printf("You have entered a negative number. "
+					"Let's print out all the numbers in reverse order!\n");
 			//gtfo
 			break;
 		}
@@ -55,8 +53,6 @@ int main(void){
 		}
 
 	}//NOTE: assuming 0 is not considered a positive integers, as per assignment instructions
-
-	//do-while loop is done since user entered a negative number
 
 	//print all the elements in the linked-list (i.e. pop all the elements in the stack)
 	prettyPrint();
