@@ -1,17 +1,44 @@
-/*
- ============================================================================
- Name        : Assignment6.c
- Author      : 
- Version     :
- Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
- ============================================================================
- */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-int main(void) {
-	puts("Ayylmao");
-	return EXIT_SUCCESS;
+void producer();
+void consumer();
+
+int main() {
+
+	//initialize TURN to 0 before forking
+	FILE *TURN;
+	TURN = fopen("TURN.txt", "w+");
+	if (TURN == NULL) {
+		exit(1);
+	}
+
+	fputc('0', TURN);
+
+
+	//Fork starts here
+
+	int pid = fork();
+
+	//something went wrong, terminate
+	if (pid == -1){
+		printf("ca marche pas :(");
+		exit(1);
+	}
+
+	//producer will do its job here
+	if (pid == 0) {
+		producer();
+		exit(0);		//program terminates when producer finishes
+	}
+
+	//consumer will do its job here
+	if (pid != 0) {
+		consumer();
+		wait();			//consumer will wait for producer to finish
+	}
+
+	return 0;
 }
