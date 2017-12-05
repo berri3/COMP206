@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+
 
 void producer() {
 
@@ -20,7 +20,7 @@ void producer() {
 
 	//get data from mydata.txt
 	if ((MYDATA = fopen("mydata.txt", "at")) == NULL) {
-		exit();
+		exit(1);
 	}
 
 	while (!feof(MYDATA)) {
