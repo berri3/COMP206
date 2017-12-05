@@ -17,7 +17,7 @@ void consumer() {
 	char dataChar;
 
 	while (1) {
-
+		printf("Consuming. Aw yeah.\n");
 		do {
 			//wait for access to the turn file
 			while ((turnFile = fopen("TURN.txt", "r+")));

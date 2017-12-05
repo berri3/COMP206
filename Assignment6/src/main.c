@@ -22,6 +22,7 @@ int main() {
 
 	//Fork starts here
 
+	printf("before fork");
 	int pid = fork();
 
 	//something went wrong, terminate

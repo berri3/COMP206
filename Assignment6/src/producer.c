@@ -20,10 +20,12 @@ void producer() {
 
 	//get data from mydata.txt
 	if ((MYDATA = fopen("mydata.txt", "at")) == NULL) {
+		printf("Producer could not open data file.\n");
 		exit(1);
 	}
 
 	while (!feof(MYDATA)) {
+		printf("Producing. Aw yeah.\n");
 		c = fgetc(MYDATA);
 
 		do {
