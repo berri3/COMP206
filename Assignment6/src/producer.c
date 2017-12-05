@@ -11,39 +11,38 @@
 
 void producer() {
 
-		FILE *MYDATA;
+	FILE *MYDATA;
 
-		char c;
-		char checkTurn;
-		FILE *TURN;
-		FILE *DATA;
+	char c;
+	char checkTurn;
+	FILE *TURN;
+	FILE *DATA;
 
-		//get data from mydata.txt
-		if ((MYDATA = fopen("mydata.txt", "at")) == NULL) {
-			exit();
-		}
+	//get data from mydata.txt
+	if ((MYDATA = fopen("mydata.txt", "at")) == NULL) {
+		exit();
+	}
 
-		while (!feof(MYDATA)) {
-			c = fgetc(MYDATA);
+	while (!feof(MYDATA)) {
+		c = fgetc(MYDATA);
 
-			do {
+		do {
 
-				while ((TURN = fopen("TURN.txt", "r+")) == NULL); //do nothing
+			while ((TURN = fopen("TURN.txt", "r+")) == NULL); //do nothing
 
-				checkTurn = fgetc(TURN);
+			checkTurn = fgetc(TURN);
 
-				if (checkTurn == '0') {
-					while ( (DATA = fopen("DATA.txt", "w+")) == NULL);
-					fputc(c, DATA);
+			if (checkTurn == '0') {
+				while ((DATA = fopen("DATA.txt", "w+")) == NULL);
+				fputc(c, DATA);
+				fputc('1', TURN);
+			}
 
-					fputc('1', TURN);
-				}
+			fclose(TURN);
+			fclose(DATA);
 
-				fclose(DATA);
-
-			} while (checkTurn != '0');
-
-		}
-
+		} while (checkTurn != '0');
 
 	}
+
+}

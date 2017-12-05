@@ -12,11 +12,13 @@ int main() {
 	FILE *TURN;
 	TURN = fopen("TURN.txt", "w+");
 	if (TURN == NULL) {
+		printf("Main.c could not open the turn file! :(\n");
 		exit(1);
 	}
 
 	fputc('0', TURN);
 
+	fclose(TURN);
 
 	//Fork starts here
 
