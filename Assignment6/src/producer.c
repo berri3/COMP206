@@ -11,10 +11,10 @@
 
 void producer() {
 
-	FILE *MYDATA;
-
+	//variables
 	char c;
 	char checkTurn;
+	FILE *MYDATA;
 	FILE *TURN;
 	FILE *DATA;
 
@@ -31,20 +31,20 @@ void producer() {
 		do {
 
 			while ((TURN = fopen("TURN.txt", "r+")) == NULL); //do nothing
-
 			checkTurn = fgetc(TURN);
-
-			if (checkTurn == '0') {
-				while ((DATA = fopen("DATA.txt", "w+")) == NULL);
-				fputc(c, DATA);
-				fputc('1', TURN);
-			}
-
-			fclose(TURN);
-			fclose(DATA);
 
 		} while (checkTurn != '0');
 
+		//polling and waiting to be able to open the data file
+		while ((DATA = fopen("DATA.txt", "w+")) == NULL);
+
+		//put the character in the file, close it.
+		fputc(c, DATA);
+		fclose(TURN);
+
+		//put give the turn to the consumer, and close the file.
+		fputc('1', TURN);
+		fclose(DATA);
 	}
 
 }
