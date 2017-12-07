@@ -5,8 +5,6 @@
  *      Author: VictorVuong
  */
 
-
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -34,12 +32,10 @@ void producer() {
 		
 		//checking if it is the producer's turn
 		checkTurn = fgetc(TURN);
-		if(checkTurn != '0') {
-			fclose(TURN);
-			continue;
-		}
-		
 		fclose(TURN);
+		if(checkTurn != '0') {
+			continue; //skip the rest of the while loop
+		}
 		
 		//get on character from mydata file
 		c = fgetc(MYDATA);
@@ -47,26 +43,26 @@ void producer() {
 		//try until able to open and put the char in the file
 		DATA = fopen("DATA.txt", "wt");
 		fputc(c, DATA);
+		fclose(DATA);
 		
 		//update the turn to let the consumer a chance to do its job
 		while ((TURN = fopen("TURN.txt", "wt")) == NULL); //do nothing
 		fputc('1', TURN);
-		fclose(DATA);
 		fclose(TURN);
-		
 	}
+
+	//no more reading from original data file: close it
+	fclose(MYDATA);
 
 	//when job is done, add a ~ to let the consumer know that it is the end of file
 	while((DATA = fopen("DATA.txt", "wt")) == NULL);
-	fputc('~', DATA);
+	fputc('\0', DATA);
+	fclose(DATA);
 
 	//update the turn back to the consumer's number
 	while((TURN = fopen("TURN.txt", "wt")) == NULL);
 	fputc('1', TURN);
-	fclose(DATA);
 	fclose(TURN);
-	fclose(MYDATA);
-	
 	
 }
 

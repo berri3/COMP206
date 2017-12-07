@@ -23,12 +23,10 @@ int main() {
 	fputc('0', TURN);
 	fclose(TURN);
 
-
-
 	pid = fork();
-	//Fork starts here
+	//Forked program starts here
 
-	//something went wrong, terminate
+	//something went wrong, gotta terminate
 	if (pid == -1){
 		printf("Something went wrong... :(\n");
 		exit(1);
@@ -37,15 +35,12 @@ int main() {
 	//producer will do its job here
 	if (pid == 0) {
 		producer();
-
 	}
 
 	//consumer will do its job here
 	if (pid != 0) { 
 		consumer();
 	}
-
-	
 
 	return 0;
 }
