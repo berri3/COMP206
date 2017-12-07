@@ -23,43 +23,30 @@ void consumer() {
 		//try until able to open
 		while ((turnFile = fopen("TURN.txt", "rt")) == NULL);	//do nothing
 		turn = fgetc(turnFile);
-
+		fclose(turnFile);
 		//check if it is our turn
 		if(turn != '1'){
-			fclose(turnFile);
 			continue;
 		}
 		
-		//fclose(turnFile);
-
-		
+		//time to get the data from the producer
 		dataFile = fopen("DATA.txt", "rt");
-	
 		dataChar = fgetc(dataFile);
-		
+		fclose(dataFile);
+
 		//check if it is our custom end of file character
-		if (dataChar == '~') {
-			fclose(dataFile);
-			fclose(turnFile);
+		if (dataChar == '\0') {
 			break;	//terminate if it is
 		}
 		//print characters on the screen
-		else if (dataChar > 0) {
+		else if (dataChar > 0) { //make sure we only print good characters
 			printf("%c", dataChar);
 		}
-				
-	
+
 		//set the turn to 0 to let the producer do its job
 		while ((turnFile = fopen("TURN.txt", "wt")) == NULL);
 		fputc('0', turnFile);
-
-
-		//close the files
 		fclose(turnFile);
-		fclose(dataFile);
-
-
 	}
-
 }
 
