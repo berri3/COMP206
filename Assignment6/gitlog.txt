@@ -1,0 +1,141 @@
+###NOTE: My partner (Victor Vuong) and I (berri3)
+###worked together on a shared git repository
+###on GitHub and not by sending filed through
+###email (which kind of defeats the purpose of
+###using git for teamwork.
+###I haved asked Prof. Vybihal in class and he
+###seemed to be okay with it.
+###Thank you,
+###Chun Ming Liang
+
+commit e5d4c36b5fcc39b80e3e2ea38b2b1c712f10e626
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Wed Dec 6 23:16:16 2017 -0500
+
+    final version, case sensitive
+
+commit 4d2ffffc6a4f7e16ea9a20844edd4a489007295b
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Wed Dec 6 23:15:10 2017 -0500
+
+    Final version
+
+commit 52fed23a674780078e1935ebc3762c8135ce2acc
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Wed Dec 6 22:44:13 2017 -0500
+
+    Changed file names for good
+
+commit c49d0302f193ab934c26fcd8ecdf8118ace6c91f
+Author: Victor Vuong <victoriquevuong@gmail.com>
+Date:   Wed Dec 6 20:36:57 2017 -0500
+
+    program should now work, fixed errors
+
+commit 8d4b17e4a2337a3fbbfe51366be7da6a5a6785e8
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Tue Dec 5 21:07:19 2017 -0500
+
+    Added comments, optimized code
+
+commit 71dee2d923de662b56b4dace1007ef0cdebfefab
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Mon Dec 4 21:54:45 2017 -0500
+
+    added make
+
+commit 7f4a544b6c046c9eb47e2c4f35935095557752c8
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Mon Dec 4 21:51:43 2017 -0500
+
+    added more prints
+
+commit ccbf796592492c90a86370c188a2fbb8b5c199fa
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Mon Dec 4 21:32:34 2017 -0500
+
+    Fixed some errors
+
+commit 2ac2a4f73cda1f516f2f26b217d0dc179112d73e
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Mon Dec 4 21:20:19 2017 -0500
+
+    "it's your way of thinking"
+
+commit 5074cc51424111bd61168b3a00ad86fa42ceccdf
+Author: xd00258 <victoriquevuong@gmail.com>
+Date:   Mon Dec 4 21:14:54 2017 -0500
+
+    added the three txt files to test
+
+commit 2695075de04beb18e03989015e9082aaeafaef26
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Mon Dec 4 21:12:30 2017 -0500
+
+    Added Consumer Source File
+
+commit c9fdbb0882213e92db9f43386c2f60f999590128
+Author: xd00258 <victoriquevuong@gmail.com>
+Date:   Mon Dec 4 21:11:58 2017 -0500
+
+    wrote the main file and producer file
+
+commit aed11aff5e9924636215782ee316ce5fdbbe9280
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Fri Dec 1 21:34:03 2017 -0500
+
+    Added comments, optimized code
+
+commit 71dee2d923de662b56b4dace1007ef0cdebfefab
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Mon Dec 4 21:54:45 2017 -0500
+
+    added make
+
+commit 7f4a544b6c046c9eb47e2c4f35935095557752c8
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Mon Dec 4 21:51:43 2017 -0500
+
+    added more prints
+
+commit ccbf796592492c90a86370c188a2fbb8b5c199fa
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Mon Dec 4 21:32:34 2017 -0500
+
+    Fixed some errors
+
+commit 2ac2a4f73cda1f516f2f26b217d0dc179112d73e
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Mon Dec 4 21:20:19 2017 -0500
+
+    "it's your way of thinking"
+
+commit 5074cc51424111bd61168b3a00ad86fa42ceccdf
+Author: xd00258 <victoriquevuong@gmail.com>
+Date:   Mon Dec 4 21:14:54 2017 -0500
+
+    added the three txt files to test
+
+commit 2695075de04beb18e03989015e9082aaeafaef26
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Mon Dec 4 21:12:30 2017 -0500
+
+    Added Consumer Source File
+
+commit c9fdbb0882213e92db9f43386c2f60f999590128
+Author: xd00258 <victoriquevuong@gmail.com>
+Date:   Mon Dec 4 21:11:58 2017 -0500
+
+    wrote the main file and producer file
+
+commit aed11aff5e9924636215782ee316ce5fdbbe9280
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Fri Dec 1 21:34:03 2017 -0500
+
+    Updated Main
+
+commit 640c39424fdb2dafa8b3366bb2a0c0dc46a830e5
+Author: berri3 <cmliang2004@hotmail.com>
+Date:   Fri Dec 1 21:19:03 2017 -0500
+
+    Started A6
