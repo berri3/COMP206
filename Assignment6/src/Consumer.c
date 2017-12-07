@@ -5,49 +5,61 @@
  *      Author: ChunMing
  */
 
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
 void consumer() {
 
-	//variables
+	//declare variables
 	FILE* dataFile;
 	FILE* turnFile;
 	char turn;
 	char dataChar;
 
 	while (1) {
-		printf("Consuming. Aw yeah.\n");
-		do {
-			//wait for access to the turn file
-			while ((turnFile = fopen("TURN.txt", "r+")));
 
-			//yay, now we have access! Let's check if it is actually our turn:
-			turn = fgetc(turnFile);
+		//try until able to open
+		while ((turnFile = fopen("TURN.txt", "rt")) == NULL);	//do nothing
+		turn = fgetc(turnFile);
 
+		//check if it is our turn
+		if(turn != '1'){
+			fclose(turnFile);
+			continue;
+		}
+		
+		//fclose(turnFile);
 
-		} while (!turn); //while it is the producer's turn... try again next time
-
-		//now we're sure it's our turn. We can try to read from the data file
-
-		//open the data file, wait till we have access:
-		while ((dataFile = fopen("DATA.txt", "rt")));
-		//now we can get the (supposedly) only character in the file
+		
+		dataFile = fopen("DATA.txt", "rt");
+	
 		dataChar = fgetc(dataFile);
+		
+		//check if it is our custom end of file character
+		if (dataChar == '~') {
+			fclose(dataFile);
+			fclose(turnFile);
+			break;	//terminate if it is
+		}
+		//print characters on the screen
+		else if (dataChar > 0) {
+			printf("%c", dataChar);
+		}
+				
+	
+		//set the turn to 0 to let the producer do its job
+		while ((turnFile = fopen("TURN.txt", "wt")) == NULL);
+		fputc('0', turnFile);
 
-		//close the data file
-		fclose(dataFile);
 
-		//gotta display this character on the screen
-		putchar(dataChar);
-
-		//change the turn number in the turn file to the producer's turn (0)
-		putc('0', turnFile);
-
-		//close the turn file
+		//close the files
 		fclose(turnFile);
+		fclose(dataFile);
 
 
 	}
 
 }
+

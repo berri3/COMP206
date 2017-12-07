@@ -5,46 +5,68 @@
  *      Author: VictorVuong
  */
 
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
 
 void producer() {
 
-	//variables
-	char c;
-	char checkTurn;
-	FILE *MYDATA;
-	FILE *TURN;
-	FILE *DATA;
-
-	//get data from mydata.txt
-	if ((MYDATA = fopen("mydata.txt", "at")) == NULL) {
+	//variable declarations
+	char c;			//char for the character that we get from the file
+	char checkTurn;		//char to check if it is our turn
+	FILE *MYDATA;		//file pointer to mydata
+	FILE *TURN;		//file pointer to the turn file
+	FILE *DATA;		//file pointer to the shared data
+	
+	//open mydata file and check if there is any error
+	if ((MYDATA = fopen("mydata.txt", "rt")) == NULL) {
 		printf("Producer could not open data file.\n");
 		exit(1);
 	}
-
-	while (!feof(MYDATA)) {
-		printf("Producing. Aw yeah.\n");
-		c = fgetc(MYDATA);
-
-		do {
-
-			while ((TURN = fopen("TURN.txt", "r+")) == NULL); //do nothing
-			checkTurn = fgetc(TURN);
-
-		} while (checkTurn != '0');
-
-		//polling and waiting to be able to open the data file
-		while ((DATA = fopen("DATA.txt", "w+")) == NULL);
-
-		//put the character in the file, close it.
-		fputc(c, DATA);
+	
+	//do the job until end of mydata file
+	while(!feof(MYDATA)) {
+		
+		//try to open the turn file until you are able to
+		while ((TURN = fopen("TURN.txt", "rt")) == NULL); //do nothing
+		
+		//checking if it is the producer's turn
+		checkTurn = fgetc(TURN);
+		if(checkTurn != '0') {
+			fclose(TURN);
+			continue;
+		}
+		
 		fclose(TURN);
-
-		//put give the turn to the consumer, and close the file.
+		
+		//get on character from mydata file
+		c = fgetc(MYDATA);
+		
+		//try until able to open and put the char in the file
+		DATA = fopen("DATA.txt", "wt");
+		fputc(c, DATA);
+		
+		//update the turn to let the consumer a chance to do its job
+		while ((TURN = fopen("TURN.txt", "wt")) == NULL); //do nothing
 		fputc('1', TURN);
 		fclose(DATA);
+		fclose(TURN);
+		
 	}
 
+	//when job is done, add a ~ to let the consumer know that it is the end of file
+	while((DATA = fopen("DATA.txt", "wt")) == NULL);
+	fputc('~', DATA);
+
+	//update the turn back to the consumer's number
+	while((TURN = fopen("TURN.txt", "wt")) == NULL);
+	fputc('1', TURN);
+	fclose(DATA);
+	fclose(TURN);
+	fclose(MYDATA);
+	
+	
 }
+
